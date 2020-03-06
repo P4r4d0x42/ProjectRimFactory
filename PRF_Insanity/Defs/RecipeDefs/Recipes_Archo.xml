@@ -6,7 +6,7 @@
 	</skillRequirements>
     <workSkill>Crafting</workSkill>
 	<recipeUsers><li>TableRoboticMachining</li></recipeUsers>
-    <workSpeedStat>CookSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>8000</workAmount>
@@ -254,7 +254,7 @@
 	<label>make vanometric power cell</label>
 	<description>Make a vanometric power cell.</description>
     <jobString>Making vanometric power cell.</jobString>
-    <workSpeedStat>CookSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>10000</workAmount>
@@ -306,7 +306,7 @@
 	<label>make infinite chemreactor</label>
 	<description>Make an infinite chemreactor.</description>
     <jobString>Making infinite chemreactor.</jobString>
-    <workSpeedStat>CookSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>10000</workAmount>
@@ -358,7 +358,7 @@
 	<label>fuse X- and Y-Composite</label>
 	<description>Make 40 Z-Composite by fusing 10 X-Composite and 10 Y-Composite along with volatite.</description>
     <jobString>Making Z-Composite.</jobString>
-    <workSpeedStat>CookSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>5000</workAmount>

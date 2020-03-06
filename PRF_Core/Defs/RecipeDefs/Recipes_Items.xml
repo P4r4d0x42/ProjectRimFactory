@@ -5,7 +5,7 @@
 	<label>make data disk</label>
 	<description>Make a roll of magnetic data tape.</description>
     <jobString>Making data disk.</jobString>
-    <workSpeedStat>CookSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>5000</workAmount>

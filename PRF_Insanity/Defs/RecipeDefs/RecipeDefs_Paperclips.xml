@@ -5,6 +5,8 @@
   	<label>make paperclips (take 1 item)</label>
   	<description>Make paperclips, processing 1 item (10 for small volume) at once.</description>
       <jobString>Making paperclips.</jobString>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <effectWorking>Drill</effectWorking>
       <soundWorking>Recipe_Machining</soundWorking>
       <workAmount>60</workAmount>
       <ingredients>
@@ -40,6 +42,8 @@
   	<label>make paperclips (take 10 items)</label>
   	<description>Make paperclips, processing 10 items (100 for small volume) at once.</description>
       <jobString>Making paperclips.</jobString>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <effectWorking>Drill</effectWorking>
       <soundWorking>Recipe_Machining</soundWorking>
       <workAmount>300</workAmount>
       <ingredients>
@@ -75,6 +79,8 @@
   	<label>make paperclips (take 75 items)</label>
   	<description>Make paperclips, processing 75 items (750 for small volume) at once.</description>
       <jobString>Making paperclips.</jobString>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <effectWorking>Drill</effectWorking>
       <soundWorking>Recipe_Machining</soundWorking>
       <workAmount>1200</workAmount>
       <ingredients>
@@ -110,6 +116,8 @@
   	<label>make AI persona core from weak AI chips</label>
   	<description>Make an AI persona core by fusing together 10 weak AI chips.</description>
       <jobString>Making AI persona core.</jobString>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <effectWorking>Cook</effectWorking>
       <soundWorking>Recipe_Machining</soundWorking>
       <workAmount>5000</workAmount>
       <ingredients>
