@@ -2,7 +2,10 @@
 <ModMetaData>
 	<name>Project RimFactory - Core</name>
 	<author>Spdskatr</author>
-	<targetVersion>1.0.0</targetVersion>
+	 <supportedVersions>
+      <li>1.1</li>
+   </supportedVersions>
+    <packageId>com.spdskatr.projectrimfactory</packageId>
 	<url>https://ludeon.com/forums/index.php?topic=30813.0</url>
 	<description><![CDATA[A mod giving you the ability to automate parts of your colony.
 <b>Credits:</b>
@@ -11,6 +14,20 @@ Wood crate texture by Chicken Plucker
 Robotic arm texture by Shotgunfrenzy
 Drone texture by Xen
 X/Y/Z-Composite and drone station texture by Scythe
-Chinese translation by Dango998
-Russian translation by Natsu_Zirok]]></description>
+Update 1.1 .ver by AbnerChen
+Chinese Traditional translation by AbnerChen
+Chinese Simplified  translation by Dango998
+Russian translation by Natsu_Zirok]]>
+</description>
+ <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
 </ModMetaData>

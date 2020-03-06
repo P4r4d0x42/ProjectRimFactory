@@ -6,7 +6,7 @@ namespace ProjectRimFactory.CultivatorTools
 {
     public class PlaceWorker_HighlightPlaceableCells : PlaceWorker
     {
-        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol)
+        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
         {
             base.DrawGhost(def, center, rot, ghostCol);
             int squareAreaRadius = def.GetModExtension<CultivatorDefModExtension>().squareAreaRadius;

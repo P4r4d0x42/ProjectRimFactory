@@ -27,6 +27,7 @@ namespace ProjectRimFactory.Drones
             pawn.workSettings = new Pawn_WorkSettings(pawn);
             pawn.workSettings.EnableAndInitialize();
             pawn.workSettings.DisableAll();
+            
             foreach (WorkTypeDef def in WorkTypes)
             {
                 pawn.workSettings.SetPriority(def, 3);
@@ -120,7 +121,7 @@ namespace ProjectRimFactory.Drones
                                     TraverseParms traverseParams = TraverseParms.For(pawn, scanner.MaxPathDanger(pawn), TraverseMode.ByPawn, false);
                                     Predicate<Thing> validator = predicate;
                                     bool forceGlobalSearch = enumerable != null;
-                                    thing = GenClosest.ClosestThingReachable(position, map, potentialWorkThingRequest, pathEndMode, traverseParams, 9999f, validator, enumerable, 0, scanner.LocalRegionsToScanFirst, forceGlobalSearch, RegionType.Set_Passable, false);
+                                    thing = GenClosest.ClosestThingReachable(position, map, potentialWorkThingRequest, pathEndMode, traverseParams, 9999f, validator, enumerable, 0, scanner.MaxRegionsToScanBeforeGlobalSearch, forceGlobalSearch, RegionType.Set_Passable, false);
                                 }
                                 if (thing != null)
                                 {
@@ -191,7 +192,6 @@ namespace ProjectRimFactory.Drones
                     }
                     if (targetInfo.IsValid)
                     {
-                        pawn.mindState.lastGivenWorkType = workGiver.def.workType;
                         Job job3;
                         if (targetInfo.HasThing)
                         {

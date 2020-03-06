@@ -43,57 +43,73 @@ namespace ProjectRimFactory.SAL3.Things.Assemblers
         
         public virtual void DoPawn()
         {
-            Pawn p = PawnGenerator.GeneratePawn(PRFDefOf.PRFSlavePawn, Faction.OfPlayer);
-            p.Name = new NameTriple("...", "SAL_Name".Translate(), "...");
-            //Assign skills
-            foreach (var s in p.skills.skills)
+            try
             {
-                s.levelInt = s.def == SkillDefOf.Artistic ? 0 : 10;
+               
+                Pawn p = PawnGenerator.GeneratePawn(PRFDefOf.PRFSlavePawn, Faction.OfPlayer);
+                p.Name = new NameTriple("...", "SAL_Name".Translate(), "...");
+                //Assign skills
+                foreach (var s in p.skills.skills)
+                {
+                    s.levelInt = s.def == SkillDefOf.Artistic ? 0 : 10;
+                }
+                //Assign Pawn's mapIndexOrState to building's mapIndexOrState
+                ReflectionUtility.mapIndexOrState.SetValue(p, ReflectionUtility.mapIndexOrState.GetValue(this));
+              
+                //Assign Pawn's position without nasty errors
+                p.SetPositionDirect(PositionHeld);
+              
+                //Clear pawn relations
+                p.relations.ClearAllRelations();
+              
+                //Set backstories
+                SetBackstoryAndSkills(p);
+             
+                //Pawn work-related stuffs
+                for (int i = 0; i < 24; i++)
+                {
+                    p.timetable.SetAssignment(i, TimeAssignmentDefOf.Work);
+                }
+                buildingPawn = p;
             }
-            //Assign Pawn's mapIndexOrState to building's mapIndexOrState
-            ReflectionUtility.mapIndexOrState.SetValue(p, ReflectionUtility.mapIndexOrState.GetValue(this));
-            //Assign Pawn's position without nasty errors
-            p.SetPositionDirect(PositionHeld);
-            //Clear pawn relations
-            p.relations.ClearAllRelations();
-            //Set backstories
-            SetBackstoryAndSkills(p);
-            //Pawn work-related stuffs
-            for (int i = 0; i < 24; i++)
-            {
-                p.timetable.SetAssignment(i, TimeAssignmentDefOf.Work);
+            catch (Exception ex) { 
+            Log.Error("ERROR=: "+ex.ToString());
             }
-
-            buildingPawn = p;
         }
 
         private static void SetBackstoryAndSkills(Pawn p)
         {
-            if (BackstoryDatabase.TryGetWithIdentifier("ChildSpy53", out Backstory bs))
+            if (BackstoryDatabase.TryGetWithIdentifier("ChildSpy47", out Backstory bs))
             {
                 p.story.childhood = bs;
             }
             else
             {
-                Log.Error("Tried to assign child backstory ChildSpy53, but not found");
+                Log.Error("Tried to assign child backstory ChildSpy47, but not found");
             }
             if (BackstoryDatabase.TryGetWithIdentifier("ColonySettler53", out Backstory bstory))
             {
+          
                 p.story.adulthood = bstory;
             }
             else
             {
+
                 Log.Error("Tried to assign child backstory ColonySettler53, but not found");
             }
             //Clear traits
+          
             p.story.traits.allTraits = new List<Trait>();
             //Reset cache
-            ReflectionUtility.cachedDisabledWorkTypes.SetValue(p.story, null);
+      
+            //ReflectionUtility.cachedDisabledWorkTypes.SetValue(p.story, null);
             //Reset cache for each skill
+   
             for (int i = 0; i < p.skills.skills.Count; i++)
             {
                 ReflectionUtility.cachedTotallyDisabled.SetValue(p.skills.skills[i], BoolUnknown.Unknown);
             }
+     
         }
 
         // Misc
@@ -113,7 +129,7 @@ namespace ProjectRimFactory.SAL3.Things.Assemblers
             Scribe_Deep.Look(ref buildingPawn, "buildingPawn");
             if (buildingPawn == null)
                 DoPawn();
-        }
+        }    
         public override IEnumerable<Gizmo> GetGizmos()
         {
             foreach (Gizmo g in base.GetGizmos())
@@ -194,6 +210,7 @@ namespace ProjectRimFactory.SAL3.Things.Assemblers
             base.Tick();
             if (this.IsHashIntervalTick(10) && Active)
             {
+              
                 if (thingQueue.Count > 0 && OutputComp.CurrentCell.Walkable(Map) && 
                     (OutputComp.CurrentCell.GetFirstItem(Map)?.TryAbsorbStack(thingQueue[0], true) ?? GenPlace.TryPlaceThing(thingQueue[0], OutputComp.CurrentCell, Map, ThingPlaceMode.Direct)))
                 {
@@ -237,6 +254,7 @@ namespace ProjectRimFactory.SAL3.Things.Assemblers
                 List<ThingCount> chosen = new List<ThingCount>();
                 if (TryFindBestBillIngredientsInSet(AllAccessibleThings.ToList(), b, chosen))
                 {
+                  
                     return new BillReport(b, (from ta in chosen select ta.Thing.SplitOff(ta.Count)).ToList());
                 }
             }
@@ -246,7 +264,7 @@ namespace ProjectRimFactory.SAL3.Things.Assemblers
         bool TryFindBestBillIngredientsInSet(List<Thing> accessibleThings, Bill b, List<ThingCount> chosen)
         {
             ReflectionUtility.MakeIngredientsListInProcessingOrder.Invoke(null, new object[] { ReflectionUtility.ingredientsOrdered.GetValue(null), b });
-            return (bool)ReflectionUtility.TryFindBestBillIngredientsInSet.Invoke(null, new object[] { accessibleThings, b, chosen });
+             return (bool)ReflectionUtility.TryFindBestBillIngredientsInSet.Invoke(null, new object[] { accessibleThings, b, chosen, new IntVec3(), false });
         }
 
         protected virtual void ProduceItems()
@@ -309,7 +327,7 @@ namespace ProjectRimFactory.SAL3.Things.Assemblers
             base.DrawGUIOverlay();
             if (Find.CameraDriver.CurrentZoom < CameraZoomRange.Middle)
             {
-                GenMapUI.DrawThingLabel(GenMapUI.LabelDrawPosFor(this, 0f), currentBillReport == null ? "AssemblerIdle".Translate() : currentBillReport.bill.LabelCap, Color.white);
+                GenMapUI.DrawThingLabel(GenMapUI.LabelDrawPosFor(this, 0f), currentBillReport == null ? "AssemblerIdle".Translate().RawText : currentBillReport.bill.LabelCap, Color.white);
             }
         }
 

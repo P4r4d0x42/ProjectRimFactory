@@ -103,7 +103,9 @@ namespace ProjectRimFactory.Storage
                     items.Add(newItem);
                 if (CanStoreMoreItems)
                 {
+                   
                     newItem.Position = Position;
+                    
                 }
             }
         }
@@ -150,6 +152,7 @@ namespace ProjectRimFactory.Storage
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
+           
             base.SpawnSetup(map, respawningAfterLoad);
             RefreshStorage();
         }

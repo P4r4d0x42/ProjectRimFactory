@@ -21,6 +21,8 @@ namespace ProjectRimFactory.Drones.AI
                     Job result;
                     if (drone.station is Building_WorkGiverDroneStation b)
                     {
+
+
                         pawn.workSettings = new Pawn_WorkSettings(pawn);
                         pawn.workSettings.EnableAndInitialize();
                         pawn.workSettings.DisableAll();

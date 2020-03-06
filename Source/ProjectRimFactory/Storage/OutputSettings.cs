@@ -17,6 +17,7 @@ namespace ProjectRimFactory.Storage
             min = 0;
             max = 75;
         }
+
         public void ExposeData()
         {
             Scribe_Values.Look(ref minTooltip, "minTooltip");

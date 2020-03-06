@@ -19,16 +19,18 @@ namespace ProjectRimFactory.Industry.UI
             labelKey = "PRFAtomicReconstructionTab";
         }
         public Building_AtomicReconstructor SelBuilding => (Building_AtomicReconstructor)SelThing;
+        public Comparer<ThingDef> ThingDefComparer = Comparer<ThingDef>.Create((first, second) => first.LabelCap.RawText.CompareTo(second.LabelCap.RawText));
         protected override void FillTab()
         {
+           
             Rect rect = new Rect(0f, 0f, size.x, size.y).ContractedBy(10f);
             Listing_Standard listing = new Listing_Standard(GameFont.Small);
             listing.Begin(rect);
             listing.Label(SelThing.LabelCapNoCount);
-            listing.LabelDouble("AtomicReconstructionTab_NowProducing".Translate(), (SelBuilding.ThingToGenerate?.LabelCap ?? "NoneBrackets".Translate()));
-            listing.LabelDouble("AtomicReconstructionTab_PaperclipCost".Translate(), SelBuilding.ItemBaseCost.ToStringDecimalIfSmall());
-            listing.LabelDouble("AtomicReconstructionTab_ConsumptionPerSecond".Translate(), (SelBuilding.FuelConsumptionPerTick * 60f).ToStringDecimalIfSmall());
-            listing.LabelDouble("AtomicReconstructionTab_Progress".Translate(), SelBuilding.ProgressToStringPercent + $" ({SelBuilding.EstimatedProductionTimeLeftPeriod})");
+            listing.LabelDouble("AtomicReconstructionTab_NowProducing".Translate().RawText, (SelBuilding.ThingToGenerate?.LabelCap ?? "NoneBrackets".Translate().RawText));
+            listing.LabelDouble("AtomicReconstructionTab_PaperclipCost".Translate().RawText, SelBuilding.ItemBaseCost.ToStringDecimalIfSmall());
+            listing.LabelDouble("AtomicReconstructionTab_ConsumptionPerSecond".Translate().RawText, (SelBuilding.FuelConsumptionPerTick * 60f).ToStringDecimalIfSmall());
+            listing.LabelDouble("AtomicReconstructionTab_Progress".Translate().RawText, SelBuilding.ProgressToStringPercent + $" ({SelBuilding.EstimatedProductionTimeLeftPeriod})");
             listing.Label("AtomicReconstructionTab_Speed".Translate(SelBuilding.speedFactor, SelBuilding.PaperclipConsumptionFactor));
             SelBuilding.speedFactor = (int)listing.Slider(SelBuilding.speedFactor, 1f, 20f);
             searchQuery = listing.TextEntry(searchQuery);
@@ -38,7 +40,7 @@ namespace ProjectRimFactory.Industry.UI
             float curY = 0;
             // Draw reset button
             Rect resetRect = new Rect(0f, curY, viewRect.width, 28f);
-            Widgets.Label(new Rect(36f, resetRect.y, resetRect.width - 36f, resetRect.height), "NoneBrackets".Translate());
+            Widgets.Label(new Rect(36f, resetRect.y, resetRect.width - 36f, resetRect.height), "NoneBrackets".Translate().RawText);
             Widgets.DrawHighlightIfMouseover(resetRect);
             if (GUI.Button(resetRect, "", Widgets.EmptyStyle))
             {
@@ -49,7 +51,7 @@ namespace ProjectRimFactory.Industry.UI
                 SoundDefOf.Click.PlayOneShot(SoundInfo.OnCamera());
             }
             curY += 28f;
-            foreach (ThingDef tDef in AllAllowedThingDefsColonyCanProduce().OrderBy(d => d.LabelCap))
+            foreach (ThingDef tDef in AllAllowedThingDefsColonyCanProduce().OrderBy(d=>d, ThingDefComparer))
             {
                 if (searchQuery == null || tDef.label.ToLower().Contains(searchQuery))
                 {
@@ -94,7 +96,7 @@ namespace ProjectRimFactory.Industry.UI
             string text2 = thingDef.description;
             if (y > -28f)
             {
-                TooltipHandler.TipRegion(rect, string.IsNullOrEmpty(text2) ? "PRFNoDesc".Translate() : text2);
+                TooltipHandler.TipRegion(rect, string.IsNullOrEmpty(text2) ? "PRFNoDesc".Translate().RawText : text2);
             }
             if (GUI.Button(rect, "", Widgets.EmptyStyle))
             {

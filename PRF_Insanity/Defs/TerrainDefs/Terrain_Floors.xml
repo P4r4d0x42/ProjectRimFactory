@@ -10,7 +10,7 @@
     <designationCategory>Floors</designationCategory>
     <fertility>0</fertility>
     <constructEffect>ConstructDirt</constructEffect>
-    <acceptTerrainSourceFilth>True</acceptTerrainSourceFilth>
+    <!-- <acceptTerrainSourceFilth>True</acceptTerrainSourceFilth> -->
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
   </TerrainDef>
   <TerrainDef ParentName="PRFFloorBase">
@@ -84,7 +84,7 @@
       <li>Heavy</li>
     </affordances>
     <fertility>0</fertility>
-    <acceptTerrainSourceFilth>True</acceptTerrainSourceFilth>
+    <!-- <acceptTerrainSourceFilth>True</acceptTerrainSourceFilth> -->
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <defName>PRFFloorComputer</defName>
     <label>AI floor</label>

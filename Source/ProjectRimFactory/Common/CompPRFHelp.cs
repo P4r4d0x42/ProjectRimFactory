@@ -16,7 +16,7 @@ namespace ProjectRimFactory.Common
         {
             get
             {
-                if (Translator.TryTranslate($"{parent.def.defName}_HelpText", out string text))
+                if (Translator.TryTranslate($"{parent.def.defName}_HelpText", out TaggedString text))
                 {
                     return text;
                 }
@@ -27,7 +27,7 @@ namespace ProjectRimFactory.Common
         {
             get
             {
-                if (Translator.TryTranslate($"{parent.def.defName}_OrdoText", out string text))
+                if (Translator.TryTranslate($"{parent.def.defName}_OrdoText", out TaggedString text))
                 {
                     return text;
                 }

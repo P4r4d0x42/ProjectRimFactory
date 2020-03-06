@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +15,21 @@ namespace ProjectRimFactory.Common
     {
         public ProjectRimFactory_ModComponent(ModContentPack content) : base(content)
         {
-            settings = GetSettings<ProjectRimFactory_ModSettings>();
-            harmony = HarmonyInstance.Create("com.spdskatr.projectrimfactory");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-            NoMessySpawns.Instance.Add(ShouldSuppressDisplace, (Building_MassStorageUnit b, Map map) => true);
+            try
+            {
+                settings = GetSettings<ProjectRimFactory_ModSettings>();
+                Harmony instance = new Harmony("com.spdskatr.projectrimfactory");
+                instance.PatchAll(Assembly.GetExecutingAssembly());
+                Log.Message($"Project RimFactory Core {typeof(ProjectRimFactory_ModComponent).Assembly.GetName().Version} - Harmony patches successful");
+                NoMessySpawns.Instance.Add(ShouldSuppressDisplace, (Building_MassStorageUnit b, Map map) => true);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Project RimFactory Core :: Caught exception: " + ex);
+            }
         }
 
-        public HarmonyInstance harmony;
+ 
 
         public ProjectRimFactory_ModSettings settings;
 

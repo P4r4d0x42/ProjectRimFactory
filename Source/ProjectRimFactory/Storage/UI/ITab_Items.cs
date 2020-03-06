@@ -167,7 +167,7 @@ namespace ProjectRimFactory.Storage.UI
             {
                 string labelShort = equipment.LabelShort;
                 FloatMenuOption item4;
-                if (equipment.def.IsWeapon && pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                if (equipment.def.IsWeapon && pawn.WorkTagIsDisabled(WorkTags.Violent))
                 {
                     item4 = new FloatMenuOption("CannotEquip".Translate(new NamedArgument[]
                     {

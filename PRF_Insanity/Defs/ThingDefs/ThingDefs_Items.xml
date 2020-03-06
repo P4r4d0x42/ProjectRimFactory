@@ -46,7 +46,7 @@
         <PRFWeakAIChip>20</PRFWeakAIChip>
       </costList>
       <recipeMaker>
-        <workSpeedStat>SmithingSpeed</workSpeedStat>
+        <workSpeedStat>CookSpeed</workSpeedStat>
         <workSkill>Crafting</workSkill>
         <effectWorking>Cook</effectWorking>
         <soundWorking>Recipe_Machining</soundWorking>

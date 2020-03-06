@@ -77,6 +77,14 @@ namespace ProjectRimFactory.Storage
             Scribe_Deep.Look(ref outputStoreSettings, "outputStoreSettings", this);
             Scribe_Deep.Look(ref outputSettings, "outputSettings", "IOPort_Minimum_UseTooltip", "IOPort_Maximum_UseTooltip");
         }
+        public override string GetInspectString()
+        {
+            if (OutputSettings.useMin && OutputSettings.useMax) return base.GetInspectString() + "\n" + "IOPort_Minimum".Translate(OutputSettings.min) + "\n" + "IOPort_Maximum".Translate(OutputSettings.max);
+            else if (OutputSettings.useMin && !OutputSettings.useMax) return base.GetInspectString() + "\n" + "IOPort_Minimum".Translate(OutputSettings.min);
+            else if (!OutputSettings.useMin && OutputSettings.useMax) return base.GetInspectString() + "\n" + "IOPort_Maximum".Translate(OutputSettings.max);
+            else return base.GetInspectString();
+        }
+
 
         public override void PostMake()
         {
