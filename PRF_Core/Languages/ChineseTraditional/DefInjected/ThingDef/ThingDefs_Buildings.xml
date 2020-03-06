@@ -33,6 +33,20 @@
   <AtomicReconstructor_Blueprint.label>原子重構器（藍圖）</AtomicReconstructor_Blueprint.label>
   <AtomicReconstructor_Frame.label>原子重構器（建造中）</AtomicReconstructor_Frame.label>
   <AtomicReconstructor_Frame.description>使用迴紋針來重構成其他物質的機器.</AtomicReconstructor_Frame.description>
+  <!--Battery10k-->
+  <Battery10k.label>一萬電池</Battery10k.label>
+  <Battery10k.description>可存儲10,000瓦功率的電池。</Battery10k.description>
+  <Battery10k_Blueprint.label>一萬電池（藍圖）</Battery10k_Blueprint.label>
+  <Battery10k_Blueprint_Install.label>一萬電池（藍圖）</Battery10k_Blueprint_Install.label>
+  <Battery10k_Frame.label>一萬電池（建築物）</Battery10k_Frame.label>
+  <Battery10k_Frame.description>可存儲10,000瓦功率的電池。</Battery10k_Frame.description>
+  <!--Battery100k-->
+  <Battery100k.label>十萬電池</Battery100k.label>
+  <Battery100k.description>可存儲100,000瓦功率的電池。</Battery100k.description>
+  <Battery100k_Blueprint.label>十萬電池（藍圖）</Battery100k_Blueprint.label>
+  <Battery100k_Blueprint_Install.label>十萬電池（藍圖）</Battery100k_Blueprint_Install.label>
+  <Battery100k_Frame.label>十萬電池（建築物）</Battery100k_Frame.label>
+  <Battery100k_Frame.description>可存儲100,000瓦功率的電池。它具有100％的效率。</Battery100k_Frame.description>
   <!--PRFMegaCapacitor-->
   <PRFMegaCapacitor.label>百萬級電池</PRFMegaCapacitor.label>
   <PRFMegaCapacitor.description>可以儲存100萬Wd 能量的電池,且效率100%,另外具有防水功能.</PRFMegaCapacitor.description>
